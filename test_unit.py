@@ -13,7 +13,7 @@ class UnitTests(unittest.TestCase):
 
         driver.goto("https://www.lolesports.com")
         pages.home.wait_for_page_load()
-        pages.league.goto()
+        pages.league.goto("NA LCS")
 
         assert driver.title == "Schedule | LoL Esports"
 

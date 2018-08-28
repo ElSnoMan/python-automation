@@ -1,25 +1,23 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as expect
+from league_esports.page_objects.pagebase import PageBase
 
 
-class HomePage:
+class HomePage(PageBase):
     def __init__(self, driver, wait):
+        super().__init__(driver, wait)
         self._driver = driver
         self._wait = wait
         self.map = HomePageMap(driver)
 
     def goto(self):
-        self.map.home_tab.click()
+        self.goto_home()
         self.wait_for_page_load()
 
     def wait_for_page_load(self):
-        self._wait.until(expect.visibility_of(self.map.home_tab))
+        self._wait.until(expect.visibility_of(self.basemap.main_navbar_tab("HOME")))
 
 
 class HomePageMap:
     def __init__(self, driver):
         self._driver = driver
-
-    @property
-    def home_tab(self):
-        return self._driver.find_element(By.XPATH, "//*[@class='main-nav-menu']/li/a[1]")

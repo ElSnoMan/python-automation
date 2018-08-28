@@ -1,15 +1,17 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as expect
+from league_esports.page_objects.pagebase import PageBase
 
 
-class LeaguePage:
+class LeaguePage(PageBase):
     def __init__(self, driver, wait):
+        super().__init__(driver, wait)
         self._driver = driver
         self._wait = wait
         self.map = LeaguePageMap(driver)
 
-    def goto(self):
-        self.map.nalcs_tab.click()
+    def goto(self, league):
+        self.goto_league(league)
         self.wait_for_page_load()
 
     def wait_for_page_load(self):
@@ -20,13 +22,6 @@ class LeaguePage:
 class LeaguePageMap:
     def __init__(self, driver):
         self._driver = driver
-
-    @property
-    def nalcs_tab(self):
-        tabs = self._driver.find_elements(
-            By.XPATH, "//ul[@class='main-nav-menu']/li/a")
-        # .First() equivalent
-        return next(tab for tab in tabs if "NA LCS" in tab.text)
 
     @property
     def league_nav_container(self):
