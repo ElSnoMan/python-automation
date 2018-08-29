@@ -1,4 +1,6 @@
+import os
 import time
+import platform
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, WebDriverException, StaleElementReferenceException
 from selenium.webdriver import Chrome, Firefox
@@ -81,16 +83,19 @@ class Driver:
 
     def _select_driver(self, browser):
         driver = None
+        os_name = platform.system().lower()
+        driver_path = f"{os.getcwd()}/_drivers/{os_name}"
 
         if browser == "chrome":
-            driver = Chrome(
-                "c:/dev/python-automation/_drivers/chromedriver.exe")
+            driver = Chrome(f"{driver_path}/chromedriver")
+                
         elif browser == "firefox":
-            driver = Firefox(
-                "c:/dev/python-automation/_drivers/chromedriver.exe")
+            driver = Firefox(f"{driver_path}/geckodriver")
 
         if driver == None:
             raise WebDriverException(f"invalid browser specified: {browser}")
 
+        # doesn't maximize on mac or linux
         driver.maximize_window()
+
         return driver
