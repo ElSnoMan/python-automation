@@ -23,7 +23,7 @@ from selenium.webdriver.remote.webelement import WebElement, WebDriverException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as expect
-from framework.driver_core.element import Element
+from framework.drivercore.element import Element
 
 
 class Driver:

@@ -26,7 +26,7 @@ __author__ = "Carlos Kidman"
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as expect
-from league_esports.page_objects.pagebase import PageBase
+from lol_esports.pom.pagebase import PageBase
 
 
 class LeaguePage(PageBase):

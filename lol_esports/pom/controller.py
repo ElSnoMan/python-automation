@@ -31,8 +31,8 @@ Example:
 
 __author__ = "Carlos Kidman"
 
-from league_esports.page_objects.home import HomePage
-from league_esports.page_objects.league import LeaguePage
+from lol_esports.pom.home import HomePage
+from lol_esports.pom.league import LeaguePage
 
 
 class Pages:

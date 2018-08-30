@@ -1,7 +1,7 @@
 import unittest
 from selenium.webdriver.support.ui import WebDriverWait
-from framework.driver_core.driver import Driver
-from league_esports.page_objects.page_controller import Pages
+from framework.drivercore.driver import Driver
+from lol_esports.pom.controller import Pages
 
 
 class UnitTests(unittest.TestCase):
