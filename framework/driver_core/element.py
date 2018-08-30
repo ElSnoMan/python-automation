@@ -1,3 +1,15 @@
+"""Classes and functionalities relevant to the WebElement implementation.
+
+Most of Selenium wants to be wrapped or extended for better control
+of states, configs, and actions. This module deals with anything
+pertaining to WebElement and its instances.
+
+Classes:
+    - Element: Wrapper of Selenium's WebElement
+"""
+
+__author__ = "Carlos Kidman"
+
 from selenium.webdriver.remote.webelement import WebElement, WebDriverException
 
 
