@@ -4,10 +4,9 @@ from lol_esports.pom.pagebase import PageBase
 
 
 class TeamStandingsPage(PageBase):
-    def __init__(self, driver, wait):
-        super().__init__(driver, wait)
+    def __init__(self, driver):
+        super().__init__(driver)
         self._driver = driver
-        self._wait = wait
         self.map = TeamStandingsPageMap(driver)
 
     def goto(self):
@@ -15,9 +14,11 @@ class TeamStandingsPage(PageBase):
 
     def select_stage_by_name(self, name):
         self.map.stage_dropdown.click()
-        self._driver.find_element(By.XPATH, f"//a[text() = '{name.lower}']").click
+        self._driver.find_element(By.XPATH, f"//a[text() = '{name.lower()}']").click()
 
-
+    def select_split_by_name(self, name):
+        self.map.split_dropdown.click()
+        self._driver.find_element(By.XPATH, f"//a[text()='{name.lower()}']").click()
 
 
 class TeamStandingsPageMap:

@@ -35,10 +35,9 @@ class LeaguePage(PageBase):
     After selecting the League to goto(), the Schedule subpage
     is loaded with the Schedule Tab selected and active.
     """
-    def __init__(self, driver, wait):
-        super().__init__(driver, wait)
+    def __init__(self, driver):
+        super().__init__(driver)
         self._driver = driver
-        self._wait = wait
         self.map = LeaguePageMap(driver)
 
     def goto(self, league):
@@ -56,7 +55,7 @@ class LeaguePage(PageBase):
         self.wait_for_page_load()
 
     def wait_for_page_load(self):
-        self._wait.until(expect.element_to_be_clickable(
+        self._driver.wait.until(expect.element_to_be_clickable(
             self.map.schedule_tab.locator))
 
 

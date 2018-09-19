@@ -31,10 +31,9 @@ from lol_esports.pom.pagebase import PageBase
 class HomePage(PageBase):
     """POM representing the Home Page."""
 
-    def __init__(self, driver, wait):
-        super().__init__(driver, wait)
+    def __init__(self, driver):
+        super().__init__(driver)
         self._driver = driver
-        self._wait = wait
         self.map = HomePageMap(driver)
 
     def goto(self):
@@ -49,7 +48,7 @@ class HomePage(PageBase):
         self.wait_for_page_load()
 
     def wait_for_page_load(self):
-        self._wait.until(expect.visibility_of(self.basemap.main_navbar_tab("HOME")))
+        self._driver.wait.until(expect.visibility_of(self.basemap.main_navbar_tab("HOME")))
 
 
 class HomePageMap:

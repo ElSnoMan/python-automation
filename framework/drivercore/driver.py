@@ -29,7 +29,12 @@ from framework.drivercore.element import Element
 class Driver:
     def __init__(self, browser):
         self.browser = browser
-        self.current = factory_create_driver(browser)
+        self._driver = factory_create_driver(browser)
+        self.wait = WebDriverWait(self._driver, 30)
+
+    @property
+    def current(self):
+        return self._driver
 
     @property
     def current_window_handle(self):

@@ -34,9 +34,8 @@ from selenium.webdriver.common.by import By
 class PageBase:
     """Base class to share functionality and elements across all pages."""
 
-    def __init__(self, driver, wait):
+    def __init__(self, driver):
         self._driver = driver
-        self._wait = wait
         self.basemap = PageBaseMap(driver)
 
     def select_locale(self, region_abbr, language):
