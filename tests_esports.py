@@ -30,5 +30,6 @@ def test_each_teams_standings_displayed(setup):
     pages.teamstandings.goto()
     pages.teamstandings.select_stage_by_name("Regular Season")
     
-    for team in pages.teamstandings.get_teams_from_api():
-        assert pages.teamstandings.find_regseason_team(team["name"]).is_displayed
+    for api_team in pages.teamstandings.get_teams_from_api():
+        team = pages.teamstandings.find_regseason_team(api_team["name"])
+        assert team.is_displayed
