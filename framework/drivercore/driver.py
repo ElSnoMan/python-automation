@@ -16,13 +16,10 @@ __author__ = "Carlos Kidman"
 import os
 import time
 import platform
-from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, WebDriverException, StaleElementReferenceException
 from selenium.webdriver import Chrome, Firefox
-from selenium.webdriver.remote.webelement import WebElement, WebDriverException
-from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebDriverException
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as expect
 from framework.drivercore.element import Element
 
 
@@ -73,8 +70,7 @@ class Driver:
         self.current.execute_async_script(js, args)
 
     def find_element(self, by, locator):
-        wait = WebDriverWait(self.current, 30)
-        web_element = wait.until(lambda drvr: drvr.find_element(by, locator))
+        web_element = self.wait.until(lambda drvr: drvr.find_element(by, locator))
         element = Element(web_element)
         element.by = by
         element.locator_str = locator

@@ -32,18 +32,17 @@ Example:
 __author__ = "Carlos Kidman"
 
 
-from framework.drivercore.driver import Driver
 from lol_esports.pom.home import HomePage
 from lol_esports.pom.league import LeaguePage
 from lol_esports.pom.teamstandings import TeamStandingsPage
 
 
 class Pages:
-    def __init__(self):
-        self._driver = Driver("chrome")
-        self._home = HomePage(self.driver)
-        self._league = LeaguePage(self.driver)
-        self._teamstandings = TeamStandingsPage(self.driver)
+    def __init__(self, driver):
+        self._driver = driver
+        self._home = HomePage(driver)
+        self._league = LeaguePage(driver)
+        self._teamstandings = TeamStandingsPage(driver)
 
     @property
     def driver(self):
