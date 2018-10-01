@@ -1,7 +1,7 @@
 # Welcome to the python-automation Repo!
-This is a public repo that is meant for anyone to join in and collaborate on. The goal is simple: Create a Test Automation Framework to test as many of the League of Legends websites like `lolesports.com`.
+This is a public repo that is meant for anyone to join in and collaborate on. The goal is simple: Create a Test Automation Framework to test as many of the League of Legends websites like lolesports.com.
 
-This is primarily for the participants at `QA at the Point` and all communication is done in our Slack group called `QA Utah`. If you are not actively at QA at the Point or live in Utah, you are still very much welcome to join in! Also, feel free to reach out to me if you'd like to be invited to the QA Utah Slack group.
+This is primarily for the participants at **QA at the Point** and all communication is done in our Slack group called **QA Utah**. If you are not actively at QA at the Point or live in Utah, you are still very much welcome to join in! Also, feel free to reach out to me if you'd like to be invited to the QA Utah Slack group.
 
 Each participant is called an "Autobot" and so our channel is called `#autobots` on Slack.
 
@@ -12,7 +12,7 @@ Create a `Dev` directory on your "root" and then `fork` or `clone` the repo down
 - Windows: `C:/Dev`
 - Mac: `/users/carlos/Dev`
     
-NOTE: Everyone in training has been told to use `VS Code`, but you can use any IDE like PyCharm.
+NOTE: Everyone in training has been told to use **VS Code**, but you can use any IDE like PyCharm.
 
 Open this project in your terminal and run the following command:
 - `pip install -r requirements.txt` for Windows
