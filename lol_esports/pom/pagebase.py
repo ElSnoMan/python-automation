@@ -29,6 +29,7 @@ __author__ = "Carlos Kidman"
 
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class PageBase:
@@ -76,7 +77,8 @@ class PageBase:
             * goto_league('NA LCS')
             * goto_league('World Championship')
         """
-        self.basemap.main_navbar_tab(league).click()
+        self.basemap.main_navbar_tab('MORE COMPETITIONS').hover()
+        self._driver.find_element(By.XPATH, f'//a[text()="{league}"]').click()
 
     def goto_tickets(self):
         self.basemap.main_navbar_tab('Tickets').click()

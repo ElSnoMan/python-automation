@@ -11,6 +11,7 @@ Classes:
 __author__ = "Carlos Kidman"
 
 from selenium.webdriver.remote.webelement import WebElement, WebDriverException
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class Element:
@@ -18,6 +19,10 @@ class Element:
         self.by = None
         self.locator_str = None
         self._webelement = webelement
+
+    @property
+    def current(self):
+        return self._webelement
 
     @property
     def current_driver(self):
@@ -74,6 +79,10 @@ class Element:
 
     def get_property(self, name):
         return self._webelement.get_property(name)
+
+    def hover(self):
+        hover = ActionChains(self.current_driver)
+        hover.move_to_element(self.current).perform()
 
     def screenshot(self, filename):
         self._webelement.screenshot(filename)
