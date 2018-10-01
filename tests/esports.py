@@ -1,10 +1,19 @@
-# run tests via cli using: $ pytest unit.py --workers 2
-# more info: https://docs.pytest.org/en/latest/fixture.html#fixture
+"""LOL Esports Tests
+
+pytest.fixture docs:
+    "https://docs.pytest.org/en/latest/fixture.html#fixture"
+
+Run tests:
+    $ pytest tests/esports.py
+
+Run tests in parallel:
+    $ pytest tests/esports.py --workers 2
+"""
 
 
 import pytest
-import lol_esports.data.esports as api
 from framework.drivercore.driver import Driver
+import lol_esports.data.esports as api
 from lol_esports.pom.controller import Pages
 
 

@@ -4,19 +4,16 @@ NOTE:
     Since the Home Page is the most common starting place for the
     lolesports.com tests, it is usually part of "Step 1 - go to lolesports.com".
 
-Classes:
-    - HomePage
-    - HomePageMap
+Classes
+--------
+* HomePage
+* HomePageMap
 
-Usage:
-    Only the Page classes should be instantiated in tests.
-    The PageMap classes are consumed by their corresponding Page class.
-    If you want to access the elements within the PageMap,
-    use the "self.map" property through the Page instance.
-
-Example:
-    driver.get("https://www.lolesports.com")
-    home = HomePage(driver, wait)
+Usage
+------
+code-example::
+    driver.goto("https://www.lolesports.com")
+    home = HomePage(driver)
     home.wait_for_page_load()
     assert home.basemap.main_navbar_tab("HOME").is_displayed
 """

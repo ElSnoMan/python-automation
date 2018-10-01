@@ -1,3 +1,10 @@
+"""LOL Esports API Tests
+
+Run tests:
+    $ pytest tests/api.py
+"""
+
+
 import requests
 import lol_esports.data.esports as api
 

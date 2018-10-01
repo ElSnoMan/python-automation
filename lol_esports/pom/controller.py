@@ -4,14 +4,16 @@ Each website consists of pages and these pages are "controlled"
 or centralized using a Page Controller. This not only increases readability,
 but it also simplifies usage of the Page Objects.
 
-Classes:
-    - Pages
+Classes
+--------
+* Pages
 
-Usage:
-    Each completed Page Object Model (POM) should be added
-    as a property of the Pages class.
+Usage
+------
+Each completed Page Object Model (POM) should be
+added as a property of the Pages class.
 
-Example:
+code-example::
   1 def test_using_page_controller(self):
   2     pages = Pages()
   3     pages.home.goto()
@@ -19,7 +21,7 @@ Example:
   5     
   6     assert pages.league.map.schedule_tab.is_displayed
 
-
+code-example::
   1 def test_without_page_controller(self):
   2     home = HomePage(driver)
   3     home.goto()

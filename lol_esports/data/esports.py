@@ -4,7 +4,8 @@ import requests
 API_URL = "https://api.lolesports.com/api/v1"
 
 
-### leagues api ###
+## leagues api ##
+
 def get_tournament_by_guid(guid):
     response = leagues_api_response("na-lcs")
     return next(t for t in response["highlanderTournaments"] if t["id"] == guid)
@@ -16,10 +17,12 @@ def get_tournament_by_title(title):
 
 
 def leagues_api_response(slug):
+    """Main response from Leagues API"""
     return requests.get(f"{API_URL}/leagues?slug={slug}").json()
 
 
-### teams api ###
+## teams api ##
+
 def get_teams(tournament_guid):
     response = teams_api_response("team-liquid", tournament_guid)
     return response["teams"]
@@ -41,6 +44,7 @@ def get_team_by_guid(guid, slug, tournament_guid):
 
 
 def teams_api_response(slug, tournament_guid):
+    """Main response from Teams API"""
     return requests.get(f"{API_URL}/teams?slug={slug}&tournament={tournament_guid}").json()
 
 
