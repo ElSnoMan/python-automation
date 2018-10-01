@@ -12,7 +12,23 @@ Create a `Dev` directory on your "root" and then `fork` or `clone` the repo down
 - Windows: `C:/Dev`
 - Mac: `/users/carlos/Dev`
     
-Everyone in training has been told to use `VS Code`, but you can use any IDE like PyCharm.
+NOTE: Everyone in training has been told to use `VS Code`, but you can use any IDE like PyCharm.
+
+Open this project in your terminal and run the following command:
+- `pip install -r requirements.txt` for Windows
+- `pip3 install -r requirements.txt` for Mac and Linux (assuming you've installed Python 3.6+)
+
+This will grab the necessary packages that are required like Selenium and Pytest.
+
+
+## Running the tests
+We use **Pytest** to run our tests. In the command-line, simply run `pytest <path-to-file>` to run the tests within the file.
+
+There are currently two main test suites in the **Tests** directory, but each is easy to run:
+- selenium.py - `pytest tests/selenium.py`
+- api.py - `pytest tests/api.py`
+
+There are also Performance Tests using Locust. This is the `locustfile.py` under the **Tests** directory. Follow the instructions in that file to get them up and running. Please be careful when running the Locust Swarm. You can run thousands of users at once, but please use these only on non-critical websites you own so you don't accidentally bring someone's site down and get in trouble.
 
 
 ## What can I work on?
