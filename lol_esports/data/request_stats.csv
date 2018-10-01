@@ -1,0 +1,9 @@
+"Method","Name","# requests","# failures","Median response time","Average response time","Min response time","Max response time","Average Content Size","Requests/s"
+"GET","community",2342,0,290,576,175,7045,163012,13.87
+"GET","game",2304,0,69,257,14,6757,9677,13.65
+"GET","merch",2188,0,150,441,65,6552,90364,12.96
+"GET","news",2274,0,73,265,14,6804,27878,13.47
+"GET","nexus",2190,0,130,358,27,6846,69532,12.97
+"GET","support",2299,0,83,363,14,6657,39754,13.62
+"GET","universe",2336,0,190,447,73,6912,9898,13.84
+"None","Total",15933,0,150,388,14,7045,58493,94.39
