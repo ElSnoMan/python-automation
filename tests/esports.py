@@ -13,7 +13,7 @@ Run tests in parallel:
 
 import pytest
 from framework.drivercore.driver import Driver
-import lol_esports.data.esports as api
+from lol_esports.data import esports_api as api
 from lol_esports.pages.controller import Pages
 
 
@@ -25,7 +25,7 @@ def setup():
     driver.quit()
 
 
-def test_esports_pom(setup):
+def test_esports_pages(setup):
     driver, pages = setup
     driver.goto("https://www.lolesports.com")
     pages.league.goto("NA LCS")

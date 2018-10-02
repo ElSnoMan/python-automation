@@ -4,7 +4,7 @@
 from framework.drivercore import by
 from framework.drivercore import waitconditions as conditions
 from lol_esports.pages.pagebase import PageBase
-from lol_esports.data import esports as api
+from lol_esports.data import esports_api as api
 
 
 class TeamStandingsPage(PageBase):

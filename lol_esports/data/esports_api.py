@@ -1,3 +1,6 @@
+"""LOL Esports APIs as found in XHR tab."""
+
+
 import requests
 
 
