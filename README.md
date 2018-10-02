@@ -25,7 +25,7 @@ This will grab the necessary packages that are required like Selenium and Pytest
 We use **Pytest** to run our tests. In the command-line, simply run `pytest <path-to-file>` to run the tests within the file.
 
 There are currently two main test suites in the **Tests** directory, but each is easy to run:
-- selenium.py - `pytest tests/selenium.py`
+- selenium.py - `pytest tests/esports.py`
 - api.py - `pytest tests/api.py`
 
 There are also Performance Tests using Locust. This is the `locustfile.py` under the **Tests** directory. Follow the instructions in that file to get them up and running. Please be careful when running the Locust Swarm. You can run thousands of users at once, but please use these only on non-critical websites you own so you don't accidentally bring someone's site down and get in trouble.
