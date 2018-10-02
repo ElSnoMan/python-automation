@@ -1,6 +1,9 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as expect
-from lol_esports.pom.pagebase import PageBase
+"""Teams Standings Page"""
+
+
+from framework.drivercore import by
+from framework.drivercore import waitconditions as conditions
+from lol_esports.pages.pagebase import PageBase
 from lol_esports.data import esports as api
 
 
@@ -40,12 +43,12 @@ class TeamStandingsPage(PageBase):
     def select_stage_by_name(self, name):
         """Selects the Stage from the Stage dropdown."""
         self.map.stage_dropdown.click()
-        self._driver.find_element(By.XPATH, f"//a[text() = '{name.lower()}']").click()
+        self._driver.find_element(by.xpath(f"//a[text()='{name.lower()}']")).click()
 
     def select_split_by_name(self, name):
         """Selects the Split from the Split dropdown."""
         self.map.split_dropdown.click()
-        self._driver.find_element(By.XPATH, f"//a[text()='{name.lower()}']").click()
+        self._driver.find_element(by.xpath(f"//a[text()='{name.lower()}']")).click()
 
 
 class TeamStandingsPageMap:
@@ -54,16 +57,16 @@ class TeamStandingsPageMap:
     
     @property
     def team_standings_tab (self):
-        return self._driver.find_element(By.XPATH, "(//a[text()='TEAMS & STANDINGS'])[last()]")
+        return self._driver.find_element(by.xpath("(//a[text()='TEAMS & STANDINGS'])[last()]"))
 
     @property
     def regseason_team_rows(self):
-        return self._driver.find_elements(By.CSS_SELECTOR, ".team-row")
+        return self._driver.find_elements(by.css(".team-row"))
     
     @property
     def stage_dropdown (self):
-        return self._driver.find_element(By.CSS_SELECTOR, "a[data-dropdown = 'drop-2']")
+        return self._driver.find_element(by.css("a[data-dropdown = 'drop-2']"))
     
     @property
     def split_dropdown (self):
-        return self._driver.find_element(By.CSS_SELECTOR, "a[data-dropdown = 'drop-1']")
+        return self._driver.find_element(by.css("a[data-dropdown = 'drop-1']"))

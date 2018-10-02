@@ -17,39 +17,38 @@ code-example::
   1 def test_using_page_controller(self):
   2     pages = Pages()
   3     pages.home.goto()
-  4     pages.league.goto("NA LCS")
-  5     
-  6     assert pages.league.map.schedule_tab.is_displayed
+  4     pages.league.goto("NA LCS")  
+  5     assert pages.league.map.schedule_tab.is_displayed
 
 code-example::
   1 def test_without_page_controller(self):
   2     home = HomePage(driver)
   3     home.goto()
   4     league = LeaguePage(driver)
-  5     league.goto("NA LCS")
-  6     
-  7     assert league.map.schedule_tab.is_displayed
+  5     league.goto("NA LCS")    
+  6     assert league.map.schedule_tab.is_displayed
 """
 
 __author__ = "Carlos Kidman"
 
 
-from lol_esports.pom.home import HomePage
-from lol_esports.pom.league import LeaguePage
-from lol_esports.pom.teamstandings import TeamStandingsPage
+from lol_esports.pages.home import HomePage
+from lol_esports.pages.league import LeaguePage
+from lol_esports.pages.teamstandings import TeamStandingsPage
 
 
 class Pages:
+    """The Pages controller for LOL Esports.
+    
+    Arguments
+    ----------
+    * driver (Driver): Driver instance to be used by the controller's pages.
+    """
     def __init__(self, driver):
-        self._driver = driver
         self._home = HomePage(driver)
         self._league = LeaguePage(driver)
         self._teamstandings = TeamStandingsPage(driver)
 
-    @property
-    def driver(self):
-        return self._driver
-    
     @property
     def home(self):
         return self._home

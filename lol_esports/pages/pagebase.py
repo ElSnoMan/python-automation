@@ -1,4 +1,4 @@
-"""Commerce UI Base
+"""Commerce UI Base.
 
 Elements and functionalities that are shared across all pages on lolesports.
 
@@ -28,7 +28,8 @@ code-example::
 __author__ = "Carlos Kidman"
 
 
-from selenium.webdriver.common.by import By
+from framework.drivercore import by
+from framework.drivercore import waitconditions as conditions
 from selenium.webdriver.common.action_chains import ActionChains
 
 
@@ -49,13 +50,15 @@ class PageBase:
         NOTE:
             Params are case-sensitive
 
-        Args:
-            * region_abbr (str): abbreviation for the region.
-            * language (str): preferred language for the above region.
+        Arguments
+        ----------
+        * region_abbr (str): abbreviation for the region.
+        * language (str): preferred language for the above region.
 
-        Examples:
-            * select_locale('na', 'English')
-            * select_locale('eune', 'Polski')
+        Examples
+        ----------
+        - select_locale('na', 'English')
+        - select_locale('eune', 'Polski')
         """
         self.basemap.current_locale_button().click()
         self.basemap.region_dropdown().click()
@@ -70,15 +73,17 @@ class PageBase:
     def goto_league(self, league):
         """Go to the specified League's page.
         
-        Args:
-            * league (str): the name of the League.
+        Arguments
+        ----------
+        * league (str): the name of the League.
 
-        Examples:
-            * goto_league('NA LCS')
-            * goto_league('World Championship')
+        Examples
+        ----------
+        - goto_league('NA LCS')
+        - goto_league('World Championship')
         """
         self.basemap.main_navbar_tab('MORE COMPETITIONS').hover()
-        self._driver.find_element(By.XPATH, f'//a[text()="{league}"]').click()
+        self._driver.find_element(by.xpath(f'//a[text()="{league}"]')).click()
 
     def goto_tickets(self):
         self.basemap.main_navbar_tab('Tickets').click()
@@ -105,15 +110,17 @@ class PageBaseMap:
         we can simply call the .lower() function.
         This means that tabname is not case-sensitive.
 
-        Args:
-            * tabname (str): the name of the tab as shown on the website.
+        Arguments
+        ----------
+        * tabname (str): the name of the tab as shown on the website.
 
-        Examples:
-            * news_tab = riot_navbar_tab('NEWS')
-            * universe_tab = riot_navbar_tab('universe')
+        Examples
+        ----------
+        - news_tab = riot_navbar_tab('NEWS')
+        - universe_tab = riot_navbar_tab('universe')
         """
-        return self._driver.find_element(By.CSS_SELECTOR,
-            f".riotbar-navbar-link[data-riotbar-link-id='{tabname.lower()}']")
+        return self._driver.find_element(by.css(
+            f'[data-riotbar-link-id="{tabname.lower()}"]'))
 
     def main_navbar_tab(self, tabname):
         """Get the Main Navbar tab by name.
@@ -121,21 +128,23 @@ class PageBaseMap:
         tabname is case-sensitive since not all tab names are uppercase.
         To validate the tab name, inspect the tab copy its text.
 
-        Args:
-            * tabname (str): the name of the tab as shown in the DOM.
+        Arguments
+        ----------
+        * tabname (str): the name of the tab as shown in the DOM.
 
-        Examples:
-            * home_tab = main_navbar_tab("HOME")
-            * tickets_tab = main_navbar_tab("Tickets")
+        Examples
+        ----------
+        - home_tab = main_navbar_tab("HOME")
+        - tickets_tab = main_navbar_tab("Tickets")
         """
-        return self._driver.find_element(By.XPATH,
-            f"//ul[@class='main-nav-menu']/li/a[text()='{tabname}']")
+        return self._driver.find_element(by.xpath(
+            f'//ul[@class="main-nav-menu"]/li/a[text()="{tabname}"]'))
 
     def current_locale_button(self):
-        return self._driver.find_element(By.ID, "riotbar-locale-switch-trigger")
+        return self._driver.find_element(by.id('riotbar-locale-switch-trigger'))
 
     def region_dropdown(self):
-        return self._driver.find_element(By.ID, "riotbar-region-dropdown-trigger")
+        return self._driver.find_element(by.id('riotbar-region-dropdown-trigger'))
 
     def region_option(self, region_abbr):
         """Get the Region Option by the region's abbreviation.
@@ -143,14 +152,17 @@ class PageBaseMap:
         To validate the tab name, inspect the region option
         in the DOM and copy its region-id. tabname is not case-sensitive.
 
-        Args:
-            * region_abbr (str): the region abbreviaton as shown in the DOM.
+        Arguments
+        ----------
+        * region_abbr (str): the region abbreviaton as shown in the DOM.
 
-        Examples:
-            * north_america_option = region_option('na')
-            * eu_nordic_and_east = region_option('eune')
+        Examples
+        ----------
+        - north_america_option = region_option('na')
+        - eu_nordic_and_east = region_option('eune')
         """
-        return self._driver.find_element(By.ID, f"riotbar-region-option-{region_abbr.lower()}")
+        return self._driver.find_element(by.id(
+            f'riotbar-region-option-{region_abbr.lower()}'))
 
     def region_language(self, region_abbr, language):
         """Get the Region Language by the region's abbreviation and language.
@@ -162,14 +174,16 @@ class PageBaseMap:
             * region_abbr is not case-sensitive
             * language is case-sensitive
 
-        Args:
-            * region_abbr (str): the region abbreviaton as shown in the DOM.
-            * language (str): the language as shown in the DOM or website
+        Arguments
+        ----------
+        * region_abbr (str): the region abbreviaton as shown in the DOM.
+        * language (str): the language as shown in the DOM or website
 
-        Examples:
-            * north_america_english = region_language('na', 'English')
-            * eu_nordic_and_east_polski = region_language('eune', 'Polski')
+        Examples
+        ----------
+        - north_america_english = region_language('na', 'English')
+        - eu_nordic_and_east_polski = region_language('eune', 'Polski')
         """
-        return self._driver.find_element(By.XPATH,
+        return self._driver.find_element(by.xpath(
             f"//div[@id='riotbar-languages-{region_abbr.lower()}'] \
-            //a[contains(text()='{language}')]")
+            //a[contains(text()='{language}')]"))

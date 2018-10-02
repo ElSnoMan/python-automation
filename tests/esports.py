@@ -1,4 +1,4 @@
-"""LOL Esports Tests
+"""LOL Esports Tests.
 
 pytest.fixture docs:
     "https://docs.pytest.org/en/latest/fixture.html#fixture"
@@ -14,7 +14,7 @@ Run tests in parallel:
 import pytest
 from framework.drivercore.driver import Driver
 import lol_esports.data.esports as api
-from lol_esports.pom.controller import Pages
+from lol_esports.pages.controller import Pages
 
 
 @pytest.fixture

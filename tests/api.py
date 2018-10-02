@@ -1,4 +1,4 @@
-"""LOL Esports API Tests
+"""LOL Esports API Tests.
 
 Run tests:
     $ pytest tests/api.py

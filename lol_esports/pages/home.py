@@ -20,13 +20,14 @@ code-example::
 
 __author__ = "Carlos Kidman"
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as expect
-from lol_esports.pom.pagebase import PageBase
+
+from framework.drivercore import by
+from framework.drivercore import waitconditions as conditions
+from lol_esports.pages.pagebase import PageBase
 
 
 class HomePage(PageBase):
-    """POM representing the Home Page."""
+    """The Home Page implementation."""
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -45,7 +46,7 @@ class HomePage(PageBase):
         self.wait_for_page_load()
 
     def wait_for_page_load(self):
-        self._driver.wait.until(expect.visibility_of(self.basemap.main_navbar_tab("HOME")))
+        self._driver.wait.until(conditions.element_displayed(self.basemap.main_navbar_tab("HOME")))
 
 
 class HomePageMap:

@@ -1,4 +1,4 @@
-"""Performance Testing with Locust
+"""Performance Testing with Locust.
 
 Things we measure:
 - Availability or Uptime
@@ -29,7 +29,7 @@ from locust import HttpLocust, TaskSet, task
 
 
 class UserBehavior(TaskSet):
-    """Set of tasks to be run my each user"""
+    """Set of tasks to be run my each user."""
     # def on_start(self):
     #     """ on_start is called when a Locust starts, before any task is scheduled."""
     #     self.login()
@@ -71,7 +71,7 @@ class UserBehavior(TaskSet):
 
 
 class WebsiteUser(HttpLocust):
-    """The user"""
+    """The user."""
     task_set = UserBehavior
     min_wait = 5000
     max_wait = 9000

@@ -17,7 +17,7 @@ def get_tournament_by_title(title):
 
 
 def leagues_api_response(slug):
-    """Main response from Leagues API"""
+    """Main response from Leagues API."""
     return requests.get(f"{API_URL}/leagues?slug={slug}").json()
 
 
@@ -44,7 +44,7 @@ def get_team_by_guid(guid, slug, tournament_guid):
 
 
 def teams_api_response(slug, tournament_guid):
-    """Main response from Teams API"""
+    """Main response from Teams API."""
     return requests.get(f"{API_URL}/teams?slug={slug}&tournament={tournament_guid}").json()
 
 

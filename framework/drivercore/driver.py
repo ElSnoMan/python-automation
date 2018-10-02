@@ -4,30 +4,47 @@ Most of Selenium wants to be wrapped or extended for better control
 of states, configs, and actions. This module deals with anything
 pertaining to the WebDriver and its instances.
 
-Classes:
-    - Driver: Wrapper of Selenium's WebDriver
+Classes
+--------
+Driver:
+    * Wrapper of Selenium's WebDriver
 
-Functions:
-    - factory_create_driver(browser): create specified instances of WebDriver
+Functions
+----------
+factory_create_driver(browser):
+    * create specified instances of WebDriver
 """
 
 __author__ = "Carlos Kidman"
 
+
 import os
-import time
 import platform
-from selenium.common.exceptions import NoSuchElementException, WebDriverException, StaleElementReferenceException
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import WebDriverException
+from selenium.common.exceptions import StaleElementReferenceException
+from selenium.common.exceptions import ElementNotVisibleException
 from selenium.webdriver import Chrome, Firefox
 from selenium.webdriver.remote.webelement import WebDriverException
 from selenium.webdriver.support.ui import WebDriverWait
-from framework.drivercore.element import Element
+from framework.drivercore.element import Element, Elements
 
 
 class Driver:
+    """Wrapper of Selenium's WebDriver.
+    
+    Arguments
+    ----------
+    * browser (str): name of browser. ('chrome', 'firefox', etc.)
+    """
     def __init__(self, browser):
         self.browser = browser
         self._driver = factory_create_driver(browser)
-        self.wait = WebDriverWait(self._driver, 30)
+        self.wait = WebDriverWait(self._driver, 30, ignored_exceptions=(
+            NoSuchElementException, 
+            WebDriverException, 
+            StaleElementReferenceException, 
+            ElementNotVisibleException))
 
     @property
     def current(self):
@@ -69,15 +86,21 @@ class Driver:
     def execute_async_script(self, js, *args):
         self.current.execute_async_script(js, args)
 
-    def find_element(self, by, locator):
-        web_element = self.wait.until(lambda drvr: drvr.find_element(by, locator))
-        element = Element(web_element)
+    def find_element(self, locator, name=""):
+        by, string = locator
+        web_element = self.wait.until(lambda drvr: drvr.find_element(by, string))
+        element = Element(web_element, name)
         element.by = by
-        element.locator_str = locator
+        element.locator_str = string
         return element
 
-    def find_elements(self, by, locator):
-        return self.current.find_elements(by, locator)
+    def find_elements(self, locator):
+        by, string = locator
+        web_elements = self.current.find_elements(by, string)
+        elements = Elements(web_elements)
+        elements.by = by
+        elements.locator_str = string
+        return elements
 
     def forward(self):
         self.current.forward()
@@ -99,6 +122,23 @@ class Driver:
 
 
 def factory_create_driver(browser):
+    """Driver Factory.
+
+    Builds a new instance of WebDriver and attaches its
+    services to the browser's executable found in the `_drivers` directory.
+    
+    Arguments
+    ----------
+    * browser (str): name of the browser to build.
+
+    Raises
+    --------
+    WebDriverException if invalid browser name.
+
+    Returns
+    --------
+    New instance of WebDriver of the specified type.
+    """
     driver = None
     os_name = platform.system().lower()
     driver_path = f"{os.getcwd()}/_drivers/{os_name}"
