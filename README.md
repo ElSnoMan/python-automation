@@ -7,6 +7,8 @@ Each participant is called an "Autobot" and so our channel is called `#autobots`
 
 
 ## How do I get started?
+First, you need to have Python 3.x installed. Simply go here: https://www.python.org/downloads/ to download and install.
+
 Create a `Dev` directory on your "root" and then `fork` or `clone` the repo down into your newly created directory and get started!
 
 - Windows: `C:/Dev`
@@ -25,7 +27,7 @@ This will grab the necessary packages that are required like Selenium and Pytest
 We use **Pytest** to run our tests. In the command-line, simply run `pytest <path-to-file>` to run the tests within the file.
 
 There are currently two main test suites in the **Tests** directory, but each is easy to run:
-- selenium.py - `pytest tests/esports.py`
+- esports.py - `pytest tests/esports.py`
 - api.py - `pytest tests/api.py`
 
 There are also Performance Tests using Locust. This is the `locustfile.py` under the **Tests** directory. Follow the instructions in that file to get them up and running. Please be careful when running the Locust Swarm. You can run thousands of users at once, but please use these only on non-critical websites you own so you don't accidentally bring someone's site down and get in trouble.
